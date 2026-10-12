@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: tncf-inventory-app
+    env: python
+    buildCommand: pip install -r requirements.txt && python seed_data.py
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: GOOGLE_SHEET_ID
+        value: 181JZpOItrdXFTJNYYjug8HRWKaJu_EsoHB3jT_R0DrA
